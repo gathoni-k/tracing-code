@@ -1,0 +1,7 @@
+.container {
+  display: flex;
+  align-items: baseline;
+}
+.imageWrapper {
+  margin-right: 1.2rem;
+}

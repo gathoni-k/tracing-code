@@ -1,3 +1,18 @@
 .container {
-  padding: 0 2rem;
+  padding: 3rem 3rem;
+}
+@media (min-width: 768px) {
+  .container {
+    padding: 3rem 7rem;
+  }
+}
+@media (min-width: 1024px) {
+  .container {
+    padding: 3rem 12rem;
+  }
+}
+.upperSection {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
