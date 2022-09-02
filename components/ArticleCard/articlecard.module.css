@@ -1,0 +1,18 @@
+.header {
+  margin-bottom: 1.2rem;
+}
+
+.heading {
+  font-weight: 700;
+  color: #3f3f3f;
+  cursor: pointer;
+}
+.heading:hover {
+  text-decoration: underline;
+  color: #9f5e26;
+}
+.date {
+  font-size: 14px;
+  letter-spacing: -0.44351px;
+  line-height: 26px;
+}
