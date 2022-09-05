@@ -6,9 +6,8 @@ metaDesc: "Far far away, behind the word mountains, far from the countries Vokal
 publishedDate: "SEPTEMBER 5, 2022"
 tags:
   - nextjs
+  - react
 ---
-
-# The main content
 
 Here is a code block.
 
