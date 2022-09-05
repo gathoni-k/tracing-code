@@ -1,15 +1,24 @@
+import Link from "next/link"
 import styles from "./articlecard.module.css"
-export default function ArticleCard() {
+interface iProps {
+  title: string
+  date: string
+  description: string
+  link: string
+}
+export default function ArticleCard({title, date, description, link}:iProps) {
   return (
     <div className={styles.container}>
         <div className={styles.header}>
-            <div className={styles.heading}>Create an active Nextjs link</div>
+            <Link href={link}>
+            <a className={styles.heading}>{title}</a>
+            </Link>
             <div className={styles.date}>
-                SEPTEMBER 2, 2022
+                {date}
             </div>
         </div>
         <div className="preview">
-        Here&rsquo;s how to remove a remote Git branch without using an app or a website user interface, say, GitHub or GitLab.
+          {description}
         </div>
         
     </div>
