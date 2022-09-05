@@ -35,3 +35,11 @@ export const getAllPublished = (folder:string) => {
     return published
   }
   
+  export const getSinglePost = async (slug:string, folder:string) => {
+    const source = getFileContent(`${slug}.md`, folder);
+    const { data: frontmatter, content } = matter(source);
+    return {
+      frontmatter,
+      content,
+    };
+  };
