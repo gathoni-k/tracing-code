@@ -1,6 +1,20 @@
 import { getAllPosts, getSinglePost } from "../../helpers/md";
 import styles from "../../styles/Home.module.css";
 import ReactMarkdown from 'react-markdown'
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
+import { vscDarkPlus } from 'react-syntax-highlighter/dist/cjs/styles/prism'
+interface CodeBlockProps {
+    language: string
+    codestring: string
+  }
+const CodeBlock = ({ language, codestring }: CodeBlockProps) => {
+return (
+    <SyntaxHighlighter language={language} style={vscDarkPlus} PreTag="div">
+        {codestring}
+    </SyntaxHighlighter>
+)
+}
+  
 interface postFrontMatter {
     title: string
     metaTitle: string
@@ -15,13 +29,28 @@ interface postProps {
     frontmatter: postFrontMatter
     content: any
   }
-  
+
 const Post = ({ content, frontmatter }:postProps) => {
     if (!frontmatter) return <></>
   return (
     <div className={styles.container}>
         <h1>{frontmatter.title}</h1>
-      <ReactMarkdown>{content}</ReactMarkdown>
+      <ReactMarkdown
+      components={{
+        code({node, inline, className, children, ...props}) {
+          const match = /language-(\w+)/.exec(className || '')
+          return !inline && match ? (
+            <CodeBlock
+              codestring={String(children).replace(/\n$/, '')}
+              language={match[1]}
+            />
+          ) : (
+            <code className={className} {...props}>
+              {children}
+            </code>
+          )
+        }
+      }}>{content}</ReactMarkdown>
     </div>
   );
 };

@@ -9,3 +9,14 @@ tags:
 ---
 
 # The main content
+
+Here is a code block.
+
+```css
+.upperSection {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem 1rem;
+}
+```
