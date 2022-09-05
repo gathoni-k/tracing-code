@@ -21,11 +21,11 @@ const Home: NextPage<iPosts> = ({posts}) => {
         <meta name="description" content="Code things I learn" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <main className={styles.container}>  
       <div className={styles.upperSection}>
         <Date></Date>
         <Socials></Socials>
-        </div>
-      <main className={styles.container}>    
+      </div>  
         <Header/>
         <div className={styles.categoryWrapper}>
         <Pill text="js" background='#deecf5'/>

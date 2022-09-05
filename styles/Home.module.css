@@ -13,7 +13,7 @@
   justify-content: center;
 }
 .categoryWrapper > * {
-  margin-right: 1rem;
+  margin: 1.2rem 1rem 0 0;
 }
 .articles {
   display: flex;
@@ -23,6 +23,9 @@
 }
 .articles > * {
   margin-top: 2rem;
+}
+.articledate {
+  color: #9f5e26;
 }
 @media (min-width: 768px) {
   .container {
