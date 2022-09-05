@@ -3,6 +3,7 @@ import styles from "../../styles/Home.module.css";
 import ReactMarkdown from 'react-markdown'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import { vscDarkPlus } from 'react-syntax-highlighter/dist/cjs/styles/prism'
+import {postProps} from "../types"
 interface CodeBlockProps {
     language: string
     codestring: string
@@ -14,22 +15,6 @@ return (
     </SyntaxHighlighter>
 )
 }
-  
-interface postFrontMatter {
-    title: string
-    metaTitle: string
-    metaDesc: string
-    isPublished: boolean
-    publishedDate: string
-    tags: string[]
-  }
-interface postProps {
-    slug: string
-    siteTitle: string
-    frontmatter: postFrontMatter
-    content: any
-  }
-
 const Post = ({ content, frontmatter }:postProps) => {
     if (!frontmatter) return <></>
   return (

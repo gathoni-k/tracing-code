@@ -7,18 +7,8 @@ import Pill from '../components/Pill/Pill'
 import Socials from '../components/Socials/Socials'
 import { getAllPublished } from '../helpers/md'
 import styles from '../styles/Home.module.css'
-interface postFrontMatter {
-    title: string
-    metaTitle: string
-    metaDesc: string
-    isPublished: boolean
-    publishedDate: string
-    tags: string[]
-  }
-interface postProps {
-    frontmatter: postFrontMatter
-    slug: string
-}
+import {postProps} from './types'
+
 interface iPosts {
     posts: postProps[]
 }
