@@ -5,7 +5,7 @@ import matter from "gray-matter";
 export const ROOT = process.cwd();
 
 export const getPath = (folder:string) => {
-    return path.join(process.cwd(), `/content`); // get path of the content
+    return path.join(process.cwd(), `/${folder}`); // get path of the content
 }
 export const getFileContent = (filename:string, folder:string) => {
     const POSTS_PATH = getPath(folder)
