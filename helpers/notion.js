@@ -1,15 +1,14 @@
 // Should convert to TypeScript after understanding this:https://github.com/makenotion/notion-sdk-js/issues/154
 const { getToday } = require("./getToday");
-
 const { Client } = require("@notionhq/client");
 const { NotionToMarkdown } = require("notion-to-md");
 const notion = new Client({
-  auth: "secret_MMbuaGFB29s9BwKk2tgc9NqqvO0xhkhtNi5cRaXdKY2",
+  auth: `${process.env.NOTION_TOKEN}`,
 });
 
 export const getAllPublished = async () => {
   const posts = await notion.databases.query({
-    database_id: "fb228b4e042947bcb58d99a4b8751fac",
+    database_id: `${process.env.DATABASE_ID}`,
     filter: {
       property: "Published",
       checkbox: {
@@ -30,7 +29,7 @@ export const getAllPublished = async () => {
 };
 const queryDatabaseByTag = async (tag) => {
   const posts = await notion.databases.query({
-    database_id: "fb228b4e042947bcb58d99a4b8751fac",
+    database_id: `${process.env.DATABASE_ID}`,
     filter: {
       and: [
         {
@@ -89,22 +88,24 @@ export const getSingleBlogPost = async (postid) => {
   };
 };
 
-const getSingleBlogPostBySlug = async (slug) => {
-  const res = await notion.databases.query({
-    database_id: "fb228b4e042947bcb58d99a4b8751fac",
+export const getSingleBlogPostBySlug = async (slug) => {
+  const n2m = new NotionToMarkdown({ notionClient: notion });
+
+  const response = await notion.databases.query({
+    database_id: `${process.env.DATABASE_ID}`,
     filter: {
       property: "Slug",
       formula: {
         string: {
-          equals: slug, // slug
+          equals: slug,
         },
       },
     },
   });
-  const post = res.results[0];
-  const n2m = new NotionToMarkdown({ notionClient: notion });
-  const metadata = getPageMetaData(post);
-  const mdblocks = await n2m.pageToMarkdown(post.id);
+
+  const page = response.results[0];
+  const metadata = getPageMetaData(page);
+  const mdblocks = await n2m.pageToMarkdown(page.id);
   const mdString = n2m.toMarkdownString(mdblocks);
   return {
     metadata,
