@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import getToday from "../../helpers/getToday"
+import {getToday} from "../../helpers/getToday"
 import styles from "./date.module.css"
 export default function Date() {
   const [today, settoday] = useState('')
