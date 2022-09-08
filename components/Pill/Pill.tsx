@@ -1,8 +1,10 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import styles from './pill.module.css'
-
+import { useRouter } from 'next/router';
 export default function Pill({text, background, link, external}:{text: string, background: string, link:string, external:boolean}) {
+  const router = useRouter();
+  const active = router.pathname == link
   if(external) {
     return (
       <a href={link} target={"_blank"} rel="noreferrer" className={styles.button} style={{backgroundColor: background}}>
@@ -13,7 +15,7 @@ export default function Pill({text, background, link, external}:{text: string, b
   }
   return (
     <Link href={link}>
-      <a className={styles.button} style={{backgroundColor: background}}>{text}</a>
+      <a className={styles.button} style={{backgroundColor: background, border:active?'2px solid #000':'none'}}>{text}</a>
     </Link>
   )
   
