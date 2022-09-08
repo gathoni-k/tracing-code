@@ -1,13 +1,22 @@
 import type { NextPage } from 'next'
 import ArticleCard from '../components/ArticleCard/ArticleCard'
 import { postMetaProps } from '../lib/types'
-import {getAllPublished} from '../helpers/notion'
 import styles from '../styles/Home.module.css'
 interface iPosts {
     posts: postMetaProps[]
 }
 
 const Home: NextPage<iPosts> = ({posts}) => {
+  if(!posts) {
+    return (
+      <div className={styles.articles}>
+        <p>Could not fetch posts:(</p>
+        <p>Check back later...</p>
+        
+      </div>
+        
+    )
+  }
   return (
     <div className={styles.articles}>
       {posts.map((post, index) => (
@@ -24,7 +33,13 @@ export const getStaticProps = async () => {
       "Content-Type": "application/json"
     },
   });
+  
   const response = await data.json()
+  if(!response) {
+    return {
+      props: { posts: null },
+    };
+  }
   return {
     props: { posts: response.posts },
   };
