@@ -22,10 +22,10 @@ export default function Layout ({children}:{children:JSX.Element}) {
       </div>  
         <Header/>
         <div className={styles.categoryWrapper}>
-        <Pill text="blog" background='#deecf5' link="/"/>
-        <Pill text="about" background='#DBDBFD' link="/about"/>
-        <Pill text="resources" background='#FBE9E7' link="/resources"/>
-        <Pill text="projects" background='#FCD3E5' link="/projects"/>
+        <Pill text="blog" background='#deecf5' link="/" external={false}/>
+        <Pill text="about" background='#DBDBFD' link="/about" external={false}/>
+        <Pill text="resources" background='#FBE9E7' link="https://marygathoni.notion.site/51e13565f48f4981a7ce1dd5b47486de?v=675caf053db546a0bdce9133e20fbfdd" external={true}/>
+        <Pill text="projects" background='#FCD3E5' link="/projects" external={false}/>
         </div>
         {children}
       </main>

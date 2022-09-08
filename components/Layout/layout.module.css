@@ -10,6 +10,7 @@
 .categoryWrapper {
   display: flex;
   justify-content: center;
+  margin-top: 1rem;
 }
 .categoryWrapper > * {
   margin: 1.2rem 1rem 0 0;
@@ -18,6 +19,9 @@
 @media (min-width: 768px) {
   .container {
     padding: 3rem 7rem;
+  }
+  .upperSection {
+    padding: 2rem 0rem;
   }
 }
 @media (min-width: 1024px) {
