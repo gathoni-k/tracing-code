@@ -1,25 +1,25 @@
 import type { NextPage } from 'next'
 import ArticleCard from '../components/ArticleCard/ArticleCard'
-import { getAllPublished } from '../helpers/md'
+import { postMetaProps } from '../lib/types'
+import {getAllPublished} from '../helpers/notion'
 import styles from '../styles/Home.module.css'
-import {postProps} from './types'
 
 interface iPosts {
-    posts: postProps[]
+    posts: postMetaProps[]
 }
 
 const Home: NextPage<iPosts> = ({posts}) => {
   return (
     <div className={styles.articles}>
       {posts.map((post, index) => (
-        <ArticleCard key={index} title={post.frontmatter.title} link={`posts/${post.slug}`} description={post.frontmatter.metaDesc} date={post.frontmatter.publishedDate}/>
+        <ArticleCard key={index} title={post.title} link={`posts/${post.id}`} description={post.description} date={post.date}/>
       ))}
     </div>
       
   )
 }
 export const getStaticProps = async () => {
-  const posts = getAllPublished("posts");
+  const posts = await getAllPublished();
   return {
     props: { posts },
   };
