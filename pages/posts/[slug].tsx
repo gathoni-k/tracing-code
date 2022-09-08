@@ -1,9 +1,8 @@
-import { getAllPosts, getSinglePost } from "../../helpers/md";
 import styles from "../../styles/Home.module.css";
 import ReactMarkdown from 'react-markdown'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import { vscDarkPlus } from 'react-syntax-highlighter/dist/cjs/styles/prism'
-import {postProps} from "../types"
+import {postProps} from "../../lib/types"
 interface CodeBlockProps {
     language: string
     codestring: string
@@ -15,13 +14,13 @@ return (
     </SyntaxHighlighter>
 )
 }
-const Post = ({ content, frontmatter }:postProps) => {
-    if (!frontmatter) return <></>
+const Post = ({ metadata, markdown }:postProps) => {
+    if (!metadata) return <></>
   return (
       <>
-      <p>{frontmatter.tags.join(', ')}</p>
-    <h2 className={styles.articleheading}>{frontmatter.title}</h2>
-    <span className={styles.articledate}>{frontmatter.publishedDate}</span>
+      <p>{metadata.tags.join(', ')}</p>
+    <h2 className={styles.articleheading}>{metadata.title}</h2>
+    <span className={styles.articledate}>{metadata.date}</span>
       <ReactMarkdown
       components={{
         code({node, inline, className, children, ...props}) {
@@ -37,7 +36,7 @@ const Post = ({ content, frontmatter }:postProps) => {
             </code>
           )
         }
-      }}>{content}</ReactMarkdown>
+      }}>{markdown}</ReactMarkdown>
       </>
   );
 };
@@ -49,14 +48,29 @@ interface iProps {
     params: params
 }
 export const getStaticProps = async ({ params }:iProps) => {
-  const post = await getSinglePost(params.slug, "posts");
+  const data = await fetch(`http://localhost:3000/api/post`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json"
+    },
+  });
+  const response = await data.json()
+  const post = response.post
   return {
     props: { ...post },
   };
 };
 
 export const getStaticPaths = async () => {
-  const paths = getAllPosts("posts").map(({ slug }) => ({ params: { slug } }));
+  const data = await fetch(`http://localhost:3000/api/posts`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json"
+    },
+  });
+  const response = await data.json()
+  const posts = response.posts
+  const paths = posts.map(({ slug }:{slug:string}) => ({ params: { slug } }));
   return {
     paths,
     fallback: false,
