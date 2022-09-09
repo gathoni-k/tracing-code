@@ -1,6 +1,5 @@
 import React from 'react'
 import ReactMarkdown from 'react-markdown';
-import { getSinglePost } from '../helpers/md';
 
 function About({content}:{content:string}) {
   return (
@@ -13,10 +12,17 @@ function About({content}:{content:string}) {
 }
 
 export const getStaticProps = async () => {
-    const content = await getSinglePost('/about', 'lib')
-    return {
-        props: {...content}
-    }
+  const data = await fetch(`http://localhost:3000/api/about`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json"
+    },
+  });
+  const response = await data.json()
+  const content = response.content
+  return {
+    props: { content },
+  };
 }
 
 
