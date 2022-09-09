@@ -51,7 +51,7 @@ interface iProps {
 export const getStaticProps = async ({ params }:iProps) => {
   const post = await getSingleBlogPostBySlug(params.slug)
   return {
-    props: { ...post },
+    props: { ...post, revalidate: 600, },
   };
 };
 
@@ -60,7 +60,7 @@ export const getStaticPaths = async () => {
   const paths = posts.map(({ slug }:{slug:string}) => ({ params: { slug } }));
   return {
     paths,
-    fallback: false,
+    fallback: "blocking",
   };
 };
 
