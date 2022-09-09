@@ -1,7 +1,9 @@
 import React from 'react'
 import ReactMarkdown from 'react-markdown';
+import { getAboutPage } from '../helpers/notion';
 
 function About({content}:{content:string}) {
+  if(!content) return <p>Looks as if you are offline</p>
   return (
     <div>
         <h1>About</h1>
@@ -12,14 +14,7 @@ function About({content}:{content:string}) {
 }
 
 export const getStaticProps = async () => {
-  const data = await fetch(`http://localhost:3000/api/about`, {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json"
-    },
-  });
-  const response = await data.json()
-  const content = response.content
+  const content = await getAboutPage()
   return {
     props: { content },
   };
