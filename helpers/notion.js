@@ -76,16 +76,11 @@ const getPageMetaData = (post) => {
   };
 };
 
-export const getSingleBlogPost = async (postid) => {
+export const getPageById = async (postid) => {
   const n2m = new NotionToMarkdown({ notionClient: notion });
-  const response = await notion.pages.retrieve({ page_id: postid });
-  const metadata = getPageMetaData(response);
   const mdblocks = await n2m.pageToMarkdown(postid);
   const mdString = n2m.toMarkdownString(mdblocks);
-  return {
-    metadata,
-    markdown: mdString,
-  };
+  return mdString;
 };
 
 export const getSingleBlogPostBySlug = async (slug) => {
