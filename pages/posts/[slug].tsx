@@ -3,6 +3,7 @@ import ReactMarkdown from 'react-markdown'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import { vscDarkPlus } from 'react-syntax-highlighter/dist/cjs/styles/prism'
 import {postProps} from "../../lib/types"
+import { getAllPublished, getSingleBlogPostBySlug } from "../../helpers/notion";
 interface CodeBlockProps {
     language: string
     codestring: string
@@ -48,28 +49,14 @@ interface iProps {
     params: params
 }
 export const getStaticProps = async ({ params }:iProps) => {
-  const data = await fetch(`http://localhost:3000/api/post`, {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json"
-    },
-  });
-  const response = await data.json()
-  const post = response.post
+  const post = await getSingleBlogPostBySlug(params.slug)
   return {
     props: { ...post },
   };
 };
 
 export const getStaticPaths = async () => {
-  const data = await fetch(`http://localhost:3000/api/posts`, {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json"
-    },
-  });
-  const response = await data.json()
-  const posts = response.posts
+  const posts = await getAllPublished()
   const paths = posts.map(({ slug }:{slug:string}) => ({ params: { slug } }));
   return {
     paths,
