@@ -3,12 +3,12 @@ const { getToday } = require("./getToday");
 const { Client } = require("@notionhq/client");
 const { NotionToMarkdown } = require("notion-to-md");
 const notion = new Client({
-  auth: `${process.env.NOTION_TOKEN}`,
+  auth: process.env.NOTION_TOKEN,
 });
 
 export const getAllPublished = async () => {
   const posts = await notion.databases.query({
-    database_id: `${process.env.DATABASE_ID}`,
+    database_id: process.env.DATABASE_ID,
     filter: {
       property: "Published",
       checkbox: {
@@ -29,7 +29,7 @@ export const getAllPublished = async () => {
 };
 const queryDatabaseByTag = async (tag) => {
   const posts = await notion.databases.query({
-    database_id: `${process.env.DATABASE_ID}`,
+    database_id: process.env.DATABASE_ID,
     filter: {
       and: [
         {
@@ -87,7 +87,7 @@ export const getSingleBlogPostBySlug = async (slug) => {
   const n2m = new NotionToMarkdown({ notionClient: notion });
 
   const response = await notion.databases.query({
-    database_id: `${process.env.DATABASE_ID}`,
+    database_id: process.env.DATABASE_ID,
     filter: {
       property: "Slug",
       formula: {
@@ -106,4 +106,14 @@ export const getSingleBlogPostBySlug = async (slug) => {
     metadata,
     markdown: mdString,
   };
+};
+
+export const getAboutPage = async () => {
+  try {
+    const page = await getPageById(process.env.ABOUT_ID);
+    if (!page) throw Error("Coule not fetch page");
+    return page;
+  } catch (error) {
+    return null;
+  }
 };
