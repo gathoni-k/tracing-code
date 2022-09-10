@@ -1,7 +1,9 @@
 .container {
   display: flex;
   align-items: baseline;
+  justify-content: baseline;
 }
-.imageWrapper {
+.button {
   margin-left: 1.6rem;
+  position: relative;
 }

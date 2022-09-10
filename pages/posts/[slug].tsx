@@ -19,9 +19,10 @@ const Post = ({ metadata, markdown }:postProps) => {
     if (!metadata) return <></>
   return (
       <>
-      <p>{metadata.tags.join(', ')}</p>
+      
     <h2 className={styles.articleheading}>{metadata.title}</h2>
     <span className={styles.articledate}>{metadata.date}</span>
+    <p style={{color: "gray"}}>{metadata.tags.join(', ')}</p>
       <ReactMarkdown
       components={{
         code({node, inline, className, children, ...props}) {

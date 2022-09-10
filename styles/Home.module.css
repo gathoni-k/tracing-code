@@ -1,45 +1,17 @@
-.container {
-  padding: 3rem 3rem;
-}
-
-.upperSection {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 2rem 1rem;
-}
-.categoryWrapper {
-  display: flex;
-  justify-content: center;
-}
-.categoryWrapper > * {
-  margin: 1.2rem 1rem 0 0;
-}
 .articles {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   margin: 3rem auto;
+  width: 100%;
 }
 .articles > * {
-  margin-top: 2rem;
+  margin-bottom: 2rem;
 }
 .articledate {
   color: #9f5e26;
 }
 @media (min-width: 768px) {
-  .container {
-    padding: 3rem 7rem;
-  }
   .articles {
     width: 100%;
   }
-}
-@media (min-width: 1024px) {
-  .container {
-    padding: 3rem 12rem;
-  }
-  /* .articles {
-    padding: 0 24rem;
-  } */
 }
