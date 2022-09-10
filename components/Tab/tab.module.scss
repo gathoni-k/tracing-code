@@ -1,0 +1,40 @@
+.tablist {
+  display: flex;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+}
+.listitem {
+  list-style-type: none;
+  button {
+    padding: 4px 8px;
+    border-radius: 4px;
+    cursor: pointer;
+    width: fit-content;
+    border: none;
+    margin-right: 1.2rem;
+    transition: transform 0.2s ease-in-out;
+    &:hover {
+      background-color: #f5f5f7;
+      transform: scale(0.97);
+    }
+    &:focus {
+      border: 1px solid #000;
+    }
+    &.active{
+      background-color: #f4e6d9;
+    }
+  }
+  
+}
+
+// .tab:hover {
+//   background-color: #f5f5f7;
+//   transform: scale(0.97);
+// }
+// .tab:active {
+//   transform: scale(0.98);
+// }
+// .tab:focus {
+//   border: 1px solid #000;
+// }
