@@ -1,4 +1,5 @@
 import { Ref, useRef, useState } from "react";
+import Card from "../Card/Card";
 import styles from "./tab.module.scss";
 
 interface iTabItem{
@@ -35,6 +36,7 @@ const TabPanel = ({tabPanelId, selectedTab, index, ...props}:iTabPanel) => {
         aria-label={tabPanelId}
         hidden={selectedTab !== index}
         tabIndex={0}
+        style={{marginTop: "3rem"}}
         >
         {props.children}
         </section>
@@ -45,7 +47,7 @@ export default function Tab() {
         {
             index:1,
             title: "recently added",
-            content: <p>Hey</p>,
+            content: <Card title="The design principles of scalable web apps" link="https://mattermost.blog" tag="Coding"/>,
             ref: useRef<HTMLButtonElement>(null)
         },
         {
