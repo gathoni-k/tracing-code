@@ -1,5 +1,7 @@
 import { Ref, useRef, useState } from "react";
+import { resource } from "../../lib/types";
 import Card from "../Card/Card";
+import Cards from "../Cards/Cards";
 import styles from "./tab.module.scss";
 
 interface iTabItem{
@@ -15,7 +17,7 @@ interface iTabPanel{
     selectedTab: number,
     index: number,
     tabPanelId: string,
-    children: JSX.Element,
+    content: any
 }
 
 
@@ -28,62 +30,74 @@ const TabItem = ({text, selectedTab, index, tabPanelId, handleChange, tabRef}:iT
         </li>
     )
 }
-const TabPanel = ({tabPanelId, selectedTab, index, ...props}:iTabPanel) => {
+const TabPanel = ({tabPanelId, selectedTab, index,content}:iTabPanel) => {
     return (
         <section
         role="tabpanel"
         id={tabPanelId}
         aria-label={tabPanelId}
         hidden={selectedTab !== index}
-        tabIndex={0}
         style={{marginTop: "3rem"}}
         >
-        {props.children}
+            <Cards cards={content}/>
         </section>
     )
 }
-export default function Tab() {
-    const tabValues = [
+interface iResources {
+    resources: {
+        recent: resource[],
+        general: resource[],
+        coding:resource[],
+        design:resource[],
+        accessibility: resource[],
+        writing: resource[],
+        career: resource[]
+    }
+  
+  }
+
+export default function Tab({resources}:iResources) {
+    const tabVals = [
         {
             index:1,
             title: "recently added",
-            content: <Card title="The design principles of scalable web apps" link="https://mattermost.blog" tag="Coding"/>,
+            content: resources.recent,
             ref: useRef<HTMLButtonElement>(null)
         },
         {
             index:2,
             title: "general",
-            content: <p>Hey</p>,
+            content: resources.general,
             ref: useRef<HTMLButtonElement>(null)
         },
         {
             index:3,
             title: "coding",
-            content: <p>code</p>,
+            content: resources.coding,
             ref: useRef<HTMLButtonElement>(null)
         },
         {
             index:4,
             title: "design",
-            content: <p>Hey</p>,
+            content: resources.design,
             ref: useRef<HTMLButtonElement>(null)
         },
         {
             index:5,
             title: "accessibility",
-            content: <p>Hey</p>,
+            content: resources.accessibility,
             ref: useRef<HTMLButtonElement>(null)
         },
         {
             index:6,
             title: "writing",
-            content: <p>Hey</p>,
+            content: resources.writing,
             ref: useRef<HTMLButtonElement>(null)
         },
         {
             index:7,
             title: "career",
-            content: <p>Hey</p>,
+            content: resources.career,
             ref: useRef<HTMLButtonElement>(null)
         },
     ]
@@ -97,12 +111,11 @@ export default function Tab() {
       ) => {
         const tabToSelect =
           selectedTab === lastTabInRound ? firstTabInRound : nextTab;
-        console.log(tabToSelect)
         setselectedTab(tabToSelect);
-        tabValues[tabToSelect-1].ref?.current?.focus()
+        tabVals[tabToSelect-1].ref?.current?.focus()
       };
       const handleKeyPress = (event:React.KeyboardEvent<HTMLUListElement>) => {
-        const tabCount = tabValues.length;
+        const tabCount = tabVals.length;
         if (event.key === "ArrowLeft") {
           const last = tabCount;
           const next = selectedTab - 1;
@@ -114,18 +127,15 @@ export default function Tab() {
           handleNextTab(first, next, tabCount);
         }
       };
-    
   return (
     <section>
         <ul className={styles.tablist}  role="tablist" aria-label="List of tabs" onKeyDown={handleKeyPress}>  
-        {tabValues.map(tab => {
+        {tabVals.map(tab => {
             return <TabItem key={tab.index} selectedTab={selectedTab} index={tab.index} text={tab.title} tabPanelId={tab.title} tabRef={tab.ref} handleChange={handleClick}/>
         })}  
         </ul>
-        {tabValues.map(tab => {
-            return <TabPanel key={tab.index} index={tab.index} selectedTab={selectedTab} tabPanelId={tab.title}>
-                {tab.content}
-            </TabPanel>
+        {tabVals.map(tab => {
+            return <TabPanel key={tab.index} index={tab.index} selectedTab={selectedTab} tabPanelId={tab.title} content={tab.content}/>
         })}
     </section>
   )

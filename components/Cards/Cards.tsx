@@ -1,19 +1,17 @@
+import { resource } from "../../lib/types"
 import Card from "../Card/Card"
 
-type Card =  {
-    title: string,
-    link: string,
-    tag: string
-}
 interface iCards{
-    cards: Card[]
+    cards: resource[]
 }
 export default function Cards({cards}:iCards) {
   return (
-    <ul>
-        {cards.map(card => {
-            return <Card key={card.title} title={card.title} link={card.link} tag={card.tag}/>
+    <>
+    <ul style={{margin: 0, padding: 0}}>
+        {cards.map((card, index) => {
+            return <Card key={index} title={card.title} link={card.link} tag={card.category}  name={card.name}/>
         })}
     </ul>
+    </>
   )
 }

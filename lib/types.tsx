@@ -10,3 +10,10 @@ export interface postProps {
     metadata:postMetaProps,
     markdown:string
 }
+export interface resource {
+    title: string;
+    name: string;
+    category: string;
+    link: string;
+    date: string;
+}
