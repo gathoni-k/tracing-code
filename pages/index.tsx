@@ -20,6 +20,7 @@ const Home: NextPage<iPosts> = ({posts}) => {
   }
   return (
     <div className={styles.articles}>
+      <h1 style={{fontSize: "3rem"}}>Blog</h1>
       {posts.map((post, index) => (
         <ArticleCard key={index} title={post.title} link={`posts/${post.slug}`} description={post.description} date={post.date}/>
       ))}

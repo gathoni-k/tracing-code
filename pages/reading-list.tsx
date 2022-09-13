@@ -19,7 +19,7 @@ interface iResources {
 const ReadingList: NextPage<iResources> = ({resources}) =>{
   return (
     <section>
-        <h1>Resources</h1>
+        <h1 style={{fontSize: "3rem"}}>Resources</h1>
         <p>A collection of materials that I have learned a lot from.</p>
         <Tab resources={resources}/>
     </section>

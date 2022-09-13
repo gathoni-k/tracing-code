@@ -1,8 +1,5 @@
 import Head from 'next/head'
-import Date from '../Date/Date'
-import Header from '../Header/Header'
 import Navbar from '../Navbar/Navbar'
-import NavLink from '../NavLink/NavLink'
 import Socials from '../Socials/Socials'
 import styles from './layout.module.css'
 
