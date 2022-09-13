@@ -1,5 +1,5 @@
 import Link from "next/link"
-import styles from "./articlecard.module.css"
+import styles from "./articlecard.module.scss"
 interface iProps {
   title: string
   date: string
@@ -8,19 +8,19 @@ interface iProps {
 }
 export default function ArticleCard({title, date, description, link}:iProps) {
   return (
-    <div className={styles.container}>
+    <section className={styles.card}>
         <div className={styles.header}>
-            <Link href={link}>
-            <a className={styles.heading}>{title}</a>
-            </Link>
+            <h2><Link href={link}>
+            <a>{title}</a>
+            </Link></h2>
             <div className={styles.date}>
                 {date}
             </div>
         </div>
-        <div className="preview">
+        <p>
           {description}
-        </div>
+        </p>
         
-    </div>
+    </section>
   )
 }
