@@ -18,10 +18,11 @@ interface iResources {
 }
 const ReadingList: NextPage<iResources> = ({resources}) =>{
   return (
-    <div>
-        <p style={{textAlign:"center"}}>A collection of materials that I have learned a lot from.</p>
+    <section>
+        <h1>Resources</h1>
+        <p>A collection of materials that I have learned a lot from.</p>
         <Tab resources={resources}/>
-    </div>
+    </section>
   )
 }
 
