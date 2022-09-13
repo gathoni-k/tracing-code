@@ -1,0 +1,41 @@
+.card {
+  position: relative;
+  margin-bottom: 1rem;
+  h2{
+    font-size: inherit;
+  }
+  a {
+    font-weight: 700;
+    color: var(--color-navlink);
+  cursor: pointer;
+  &:hover{
+    color: #9f5e26;
+  }
+    &::before{
+        content: '';
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        top: 0;
+        &:hover {
+            border: 2px solid #000
+        }
+        &:focus {
+            border-color: 2px solid #000
+        }
+    }
+    
+    
+}
+}
+.header {
+  margin-bottom: 1.2rem;
+  div {
+    font-size: 14px;
+    letter-spacing: -0.44351px;
+    line-height: 26px;
+  }
+}
+
+
