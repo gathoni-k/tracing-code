@@ -38,7 +38,7 @@ body[data-theme="light"] {
 body[data-theme="dark"] {
   --color-bg: #101010;
   --color-secondary-text: #d6d9e6;
-  --color-nav-bg: #131314;
+  --color-nav-bg: #1f1f20;
   --color-card-bg: #191616;
   --color-card-border: #191616;
   --color-tag-bg: #282828;
