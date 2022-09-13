@@ -22,12 +22,12 @@ interface iColors extends IObjectKeys  {
 }
 const colors: iColors =  {
     recent: "#C6DCE4",
-    general: "#DAEAF1",
-    coding:"#F2D1D1",
-    design:"#FFE6E6",
-    accessibility: "#CED0E5",
-    writing: "#F9F2ED",
-    career: "#92B4ECs"
+    general: "#E8DEEE",
+    coding:"#FFE2DD",
+    design:"#D3E5EF",
+    accessibility: "#FFE2DD",
+    writing: "#FFE2DD",
+    career: "#FADEC9"
 }
 
 export default function Card({ link, tag, name}:iCard) {
