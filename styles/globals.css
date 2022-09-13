@@ -2,20 +2,68 @@ html {
   font-size: 62.5%;
 }
 body {
+  /* --color-text: #000;
+  --color-link: "#9f5e26";
+  --color-hover: "#8f5522";
+  --color-active: "#5f3817";
+  --color-bg: #ffffff;
+  --color-nav-bg: #eef1ff;
+  --color-card-bg: #f8f9ff; */
   padding: 0;
   margin: 0;
-  background: #fff;
   font-size: 1.6rem;
   font-family: "Hind", sans-serif;
   margin: 0 auto !important;
   float: none !important;
+  background: var(--color-bg);
+  color: var(--color-text);
+  transition: background 0.25s ease-in-out;
+}
+
+body[data-theme="light"] {
+  --color-text: #000;
+  --color-secondary-text: #75767d;
+  --color-card-bg: #fff;
+  --color-card-border: #f3f3f5;
+  --color-tag-bg: #282828;
+  --color-card-bg-hover: #f3f3f5;
+  --color-link: #9f5e26;
+  --color-navlink: #000;
+  --color-hover: #5f3817;
+  --color-active: #5f3817;
+  --color-bg: #ffffff;
+  --color-nav-bg: #f3e8ee;
+}
+
+body[data-theme="dark"] {
+  --color-bg: #101010;
+  --color-secondary-text: #d6d9e6;
+  --color-nav-bg: #131314;
+  --color-card-bg: #191616;
+  --color-card-border: #191616;
+  --color-tag-bg: #282828;
+  --color-card-bg-hover: #1f1f1f;
+  --color-text: #fff;
+  --color-link: #bc8e67;
+  --color-navlink: #fff;
+  --color-hover: #9f5e26;
+  --color-active: #d9bfa8;
 }
 
 a {
-  color: inherit;
+  color: var(--color-link);
   text-decoration: none;
+}
+a:hover {
+  color: var(--color-hover);
+}
+a:active {
+  color: var(--color-active);
 }
 
 * {
   box-sizing: border-box;
+}
+.secondary-text {
+  color: var(--color-secondary-text);
 }

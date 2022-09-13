@@ -1,9 +1,17 @@
 .container {
   display: flex;
   align-items: baseline;
-  justify-content: baseline;
+  justify-content: space-between;
+  align-items: center;
 }
 .button {
   margin-left: 1.6rem;
   position: relative;
+  color: var(--color-secondary-text);
+}
+.button:hover {
+  color: var(--color-text);
+}
+.span {
+  margin-left: 1.6rem;
 }

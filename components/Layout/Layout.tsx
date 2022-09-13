@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import Navbar from '../Navbar/Navbar'
 import Socials from '../Socials/Socials'
+import ThemeToggler from '../ThemeToggler/ThemeToggler'
 import styles from './layout.module.css'
 
 
