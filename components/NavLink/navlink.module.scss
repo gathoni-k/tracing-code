@@ -11,9 +11,9 @@
       transform: scale(0.99);
       box-shadow: none;
     }
-    &:hover {
-      color: var(--color-hover);
-    }
+  &:hover {
+    color: var(--color-link);
+  }
   
 }
 @media (min-width: 768px) {
