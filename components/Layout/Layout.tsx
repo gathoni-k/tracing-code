@@ -13,14 +13,14 @@ export default function Layout ({children}:{children:JSX.Element}) {
         <meta name="description" content="Code things I learn" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <section className={styles.nav}>
+      <nav className={styles.nav}>
       <Navbar/>
-      </section>
+      </nav>
       <main className={styles.container}> 
       <section className={styles.children}>
-      <div className={styles.upperSection}>
+      <nav className={styles.upperSection}>
         <Socials></Socials>
-      </div>  
+      </nav>  
       {children}
       </section>
         
