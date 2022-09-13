@@ -1,8 +1,8 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import styles from './navlink.module.css'
+import styles from './navlink.module.scss'
 import { useRouter } from 'next/router';
-export default function Pill({text, background, link, external}:{text: string, background: string, link:string, external:boolean}) {
+export default function Pill({text, link, external}:{text: string, link:string, external:boolean}) {
   const router = useRouter();
   const active = router.pathname == link
   if(external) {
