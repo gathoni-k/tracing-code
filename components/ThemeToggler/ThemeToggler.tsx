@@ -37,11 +37,12 @@ export default function ThemeToggler() {
         document.body.dataset.theme = theme
 
     }, [theme])
+
   return (
     <>
-        <ul className={styles.theme} onClick={handleToggle}>
-            {theme=== "dark"?<BsSun className={styles.themeicon}/>:<BsMoon className={styles.themeicon}/>}
-        </ul>
+        <button aria-label='toggle dark mode' className={styles.theme} onClick={handleToggle}>
+            {theme=== "dark"?<BsSun className={styles.themeicon} aria-hidden="true"/>:<BsMoon aria-hidden="true" className={styles.themeicon}/>}
+        </button>
     </>
   )
 }

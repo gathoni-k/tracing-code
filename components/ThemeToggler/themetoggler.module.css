@@ -1,6 +1,8 @@
 .theme {
   padding: 0;
   list-style-type: none;
+  border: none;
+  background-color: transparent;
   border-radius: 5px;
   cursor: pointer;
   color: var(--color-link);
