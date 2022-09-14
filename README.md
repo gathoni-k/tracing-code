@@ -1,5 +1,7 @@
 Personal website built using [Next.js](https://nextjs.org/) and the [Notion API](https://notion.so/) - WIP
 
+![Personal website homepage](https://i.ibb.co/RcCx2sJ/mary-gathoni.jpg)
+
 This website is deployed using the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme).
 
 Check out the [live version](https://tracing-code.vercel.app)!
