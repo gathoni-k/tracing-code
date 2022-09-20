@@ -18,6 +18,7 @@ body {
   background: var(--color-bg);
   color: var(--color-text);
   transition: background 0.25s ease-in-out;
+  transform-origin: right;
 }
 
 body[data-theme="light"] {
